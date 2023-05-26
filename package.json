@@ -1,0 +1,90 @@
+{
+	"name": "create-scss-wxml",
+	"displayName": "createScssWxml",
+	"description": "create scss struct for wxml",
+	"version": "0.0.1",
+	"author": "naro7l@foxmail.com",
+	"publisher": "Leiss",
+	"engines": {
+		"vscode": "^1.36.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"icon": "asset/logo.png",
+	"keywords": [
+		"scss",
+		"wxml",
+		"createScssWxml"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pandaSeven/createScssWxml.git"
+	},
+	"bugs": {
+		"url": "https://github.com/pandaSeven/createScssWxml/issues"
+	},
+	"activationEvents": [
+		"onLanguage:wxml"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.createScssWxml",
+				"title": "createScssWxml"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "editorFocus",
+					"command": "extension.createScssWxml",
+					"group": "navigation"
+				}
+			]
+		},
+		"configuration": {
+			"title": "createScssWxml",
+			"properties": {
+				"createScssWxml.excuteMode": {
+					"type": "string",
+					"description": "需要在什么情况下生成scss文件",
+					"default": "onCommand",
+					"enum": [
+						"onCommand",
+						"onSave&onCommand"
+					],
+					"enumDescriptions": [
+						"当使用右键菜单命令 createScssWxml 命令时执行",
+						"当保存时，以及当使用右键菜单命令 createScssWxml 命令时执行"
+					]
+				},
+				"createScssWxml.scssFilePath": {
+					"type": "string",
+					"description": "编译生成的 scss字符串写入的文件路径，不传则默认写入当前文件的index.scss ）",
+					"default": "../index.scss"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "webpack --mode production",
+		"compile": "webpack --mode none",
+		"watch": "webpack --mode none --watch"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.36.0",
+		"glob": "^7.1.4",
+		"mocha": "^6.1.4",
+		"tslint": "^5.12.1",
+		"typescript": "^3.3.1",
+		"vscode-test": "^1.0.0-next.0",
+		"webpack": "^5.84.1",
+		"webpack-cli": "^5.1.1"
+	},
+	"dependencies": {}
+}
